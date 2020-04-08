@@ -20,7 +20,7 @@ const covid19ImpactEstimator = (data) => {
       currentlyInfected: calculateCurrentlyInfected(reportedCases, 50),
       infectedByRequestedTime: calculateInfectionsByRequestedTime(reportedCases, 50)
     }
-  }
+  };
 };
 
 export default covid19ImpactEstimator;
