@@ -2,5 +2,6 @@
 export const calculateCurrentlyInfected = (reportedCases, multiplier) => reportedCases * multiplier;
 
 // Infections By Requested Time Calculator
-export const calculateInfectionsByRequestedTime = (reportedCases, multiplier) =>
-  calculateCurrentlyInfected(reportedCases, multiplier) * 1024;
+export const calculateInfectionsByRequestedTime = (reportedCases, multiplier) => {
+  return calculateCurrentlyInfected(reportedCases, multiplier) * 1024;
+};
