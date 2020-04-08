@@ -1,6 +1,6 @@
 import {
   currentlyInfected,
-  infectionsByRequestedTime,
+  infectionsByReqTime,
   ibrtFactor
 } from './helpers';
 
@@ -16,11 +16,11 @@ const covid19ImpactEstimator = (data) => {
     data,
     impact: {
       currentlyInfected: currentlyInfected(reportedCases, 10),
-      infectionsByRequestedTime: infectionsByRequestedTime(reportedCases, 10, ibrtFactor(timeToElapse))
+      infectionsByRequestedTime: infectionsByReqTime(reportedCases, 10, ibrtFactor(timeToElapse))
     },
     severeImpact: {
       currentlyInfected: currentlyInfected(reportedCases, 50),
-      infectionsByRequestedTime: infectionsByRequestedTime(reportedCases, 50, ibrtFactor(timeToElapse))
+      infectionsByRequestedTime: infectionsByReqTime(reportedCases, 50, ibrtFactor(timeToElapse))
     }
   };
 };

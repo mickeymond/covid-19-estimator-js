@@ -5,4 +5,4 @@ export const currentlyInfected = (cases, mul) => cases * mul;
 export const ibrtFactor = days => days / 3;
 
 // Infections By Requested Time Calculator
-export const infectionsByRequestedTime = (cases, mul, fac) => currentlyInfected(cases, mul) * 2 ** fac;
+export const infectionsByReqTime = (cases, mul, fac) => currentlyInfected(cases, mul) * 2 ** fac;
