@@ -3,15 +3,15 @@ export const currentlyInfected = (cases, mul) => cases * mul;
 
 // Infections By Requested Time Factor
 export const infectionsByRequestedTimeFactor = (periodType, period) => {
-  if (periodType === 'days') {
-    return period / 3;
+  if (periodType === 'MONTHS') {
+    return (period * 7 * 4) / 3;
   }
 
-  if (periodType === 'weeks') {
+  if (periodType === 'WEEKS') {
     return (period * 7) / 3;
   }
 
-  return (period * 7 * 4) / 3;
+  return period / 3;
 };
 
 // Infections By Requested Time Calculator
