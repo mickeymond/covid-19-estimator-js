@@ -1,6 +1,6 @@
 import {
-  calculateCurrentlyInfected,
-  calculateInfectionsByRequestedTime
+  currentlyInfected,
+  infectionsByRequestedTime
 } from './helpers';
 
 const covid19ImpactEstimator = (data) => {
@@ -13,8 +13,8 @@ const covid19ImpactEstimator = (data) => {
   return {
     data,
     impact: {
-      currentlyInfected: calculateCurrentlyInfected(reportedCases, 10),
-      infectedByRequestedTime: calculateInfectionsByRequestedTime(reportedCases, 10)
+      currentlyInfected: currentlyInfected(reportedCases, 10),
+      infectedByRequestedTime: infectionsByRequestedTime(reportedCases, 10)
     },
     severeImpact: {
       currentlyInfected: calculateCurrentlyInfected(reportedCases, 50),
