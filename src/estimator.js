@@ -1,26 +1,30 @@
 import {
   currentlyInfected,
-  infectionsByReqTime,
-  ibrtFactor
+  infectionsByRequestedTime,
+  infectionsByRequestedTimeFactor
 } from './helpers';
 
 const covid19ImpactEstimator = (data) => {
   // Destructure Data
   const {
     reportedCases,
+    periodType,
     timeToElapse
   } = data;
+
+  // Calculater Infections By Requested Time Factor
+  const ibrtFactor = infectionsByRequestedTimeFactor(periodType, timeToElapse);
 
   // Return Results
   return {
     data,
     impact: {
       currentlyInfected: currentlyInfected(reportedCases, 10),
-      infectionsByRequestedTime: infectionsByReqTime(reportedCases, 10, ibrtFactor(timeToElapse))
+      infectionsByRequestedTime: infectionsByRequestedTime(reportedCases, 10, ibrtFactor)
     },
     severeImpact: {
       currentlyInfected: currentlyInfected(reportedCases, 50),
-      infectionsByRequestedTime: infectionsByReqTime(reportedCases, 50, ibrtFactor(timeToElapse))
+      infectionsByRequestedTime: infectionsByRequestedTime(reportedCases, 50, ibrtFactor)
     }
   };
 };
