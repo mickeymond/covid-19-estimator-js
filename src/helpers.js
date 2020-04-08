@@ -6,15 +6,21 @@ export const currentlyInfected = (cases, mul) => cases * mul;
 
 // Infections By Requested Time Factor
 export const infectionsByRequestedTimeFactor = (periodType, period) => {
-  if (periodType.toLowerCase() === PERIOD.MONTHS.toLowerCase()) {
-    return (period * 30) / 3;
+  let factor;
+
+  switch (periodType.toUpperCase()) {
+    case PERIOD.MONTHS:
+      factor = (period * 30) / 3;
+      break;
+    case PERIOD.WEEKS:
+      factor = (period * 7) / 3;
+      break;
+    default:
+      factor = period / 3;
+      break;
   }
 
-  if (periodType.toLowerCase() === PERIOD.WEEKS.toLowerCase()) {
-    return (period * 7) / 3;
-  }
-
-  return period / 3;
+  return factor;
 };
 
 // Infections By Requested Time Calculator
