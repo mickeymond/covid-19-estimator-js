@@ -1,7 +1,8 @@
+import { whatIs } from 'on-covid-19';
 import {
-  currentlyInfected,
-  infectionsByRequestedTime,
-  infectionsByRequestedTimeFactor
+  currentlyInfected as _CI,
+  infectionsByRequestedTime as _IBRT,
+  infectionsByRequestedTimeFactor as _IBRTF
 } from './helpers';
 
 const covid19ImpactEstimator = (data) => {
@@ -9,22 +10,27 @@ const covid19ImpactEstimator = (data) => {
   const {
     reportedCases,
     periodType,
-    timeToElapse
+    timeToElapse,
+    totalHospitalBeds
   } = data;
 
   // Calculate Infections By Requested Time Factor
-  const ibrtFactor = infectionsByRequestedTimeFactor(periodType, timeToElapse);
+  const ibrtFactor = _IBRTF(periodType, timeToElapse);
 
   // Return Results
   return {
     data,
     impact: {
-      currentlyInfected: currentlyInfected(reportedCases, 10),
-      infectionsByRequestedTime: infectionsByRequestedTime(reportedCases, 10, ibrtFactor)
+      currentlyInfected: _CI(reportedCases, 10),
+      infectionsByRequestedTime: _IBRT(reportedCases, 10, ibrtFactor),
+      severeCasesByRequestedTime: whatIs('15%').of(_IBRT(reportedCases, 10, ibrtFactor)),
+      hospitalBedsByRequestedTime: whatIs('35%').of(totalHospitalBeds)
     },
     severeImpact: {
-      currentlyInfected: currentlyInfected(reportedCases, 50),
-      infectionsByRequestedTime: infectionsByRequestedTime(reportedCases, 50, ibrtFactor)
+      currentlyInfected: _CI(reportedCases, 50),
+      infectionsByRequestedTime: _IBRT(reportedCases, 50, ibrtFactor),
+      severeCasesByRequestedTime: whatIs('15%').of(_IBRT(reportedCases, 50, ibrtFactor)),
+      hospitalBedsByRequestedTime: whatIs('35%').of(totalHospitalBeds)
     }
   };
 };
