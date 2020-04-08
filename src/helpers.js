@@ -23,6 +23,25 @@ export const infectionsByRequestedTimeFactor = (periodType, period) => {
   return factor;
 };
 
+// Convert To Days
+export const convertToDays = (periodType, period) => {
+  let days;
+
+  switch (periodType.toUpperCase()) {
+    case PERIOD.MONTHS:
+      days = period * 30;
+      break;
+    case PERIOD.WEEKS:
+      days = period * 7;
+      break;
+    default:
+      days = period;
+      break;
+  }
+
+  return days;
+};
+
 // Infections By Requested Time Calculator
 export const infectionsByRequestedTime = (cases, mul, fac) => {
   const result = currentlyInfected(cases, mul);
