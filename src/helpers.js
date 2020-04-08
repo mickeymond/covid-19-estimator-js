@@ -20,5 +20,5 @@ export const infectionsByRequestedTimeFactor = (periodType, period) => {
 // Infections By Requested Time Calculator
 export const infectionsByRequestedTime = (cases, mul, fac) => {
   const result = currentlyInfected(cases, mul);
-  return result * 2 ** fac;
+  return result * (2 ** fac);
 };

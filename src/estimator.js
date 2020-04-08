@@ -12,7 +12,7 @@ const covid19ImpactEstimator = (data) => {
     timeToElapse
   } = data;
 
-  // Calculater Infections By Requested Time Factor
+  // Calculate Infections By Requested Time Factor
   const ibrtFactor = infectionsByRequestedTimeFactor(periodType, timeToElapse);
 
   // Return Results
