@@ -3,25 +3,6 @@
 // Currently Infected Calculator
 export const currentlyInfected = (cases, mul) => cases * mul;
 
-// Infections By Requested Time Factor
-export const infectionsByRequestedTimeFactor = (periodType, period) => {
-  let factor = 0;
-
-  if (periodType.toLowerCase() === 'days' || periodType.toLowerCase() === 'day') {
-    factor = period / 3;
-  }
-
-  if (periodType.toLowerCase() === 'weeks' || periodType.toLowerCase() === 'week') {
-    factor = (period * 7) / 3;
-  }
-
-  if (periodType.toLowerCase() === 'months' || periodType.toLowerCase() === 'month') {
-    factor = (period * 30) / 3;
-  }
-
-  return factor;
-};
-
 // Convert To Days
 export const convertToDays = (periodType, period) => {
   let days = 0;

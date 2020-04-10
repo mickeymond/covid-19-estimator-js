@@ -2,7 +2,6 @@ import { whatIs } from 'on-covid-19';
 import {
   currentlyInfected as _CI,
   infectionsByRequestedTime as _IBRT,
-  infectionsByRequestedTimeFactor as _IBRTF,
   convertToDays as _CTD
 } from './helpers';
 
@@ -17,10 +16,10 @@ const covid19ImpactEstimator = (data) => {
   } = data;
 
   // Calculate Infections By Requested Time Factor
-  const ibrtFactor = _IBRTF(periodType, timeToElapse);
+  const ibrtFactor = Math.trunc(_CTD(periodType, timeToElapse)) / 3;
 
   // Calculate Dollars In Flight Factor
-  const difFactor = avgDailyIncomeInUSD * _CTD(periodType, timeToElapse);
+  const difFactor = avgDailyIncomeInUSD * Math.trunc(_CTD(periodType, timeToElapse));
 
   // Return Results
   return {
