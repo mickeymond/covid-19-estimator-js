@@ -5,11 +5,7 @@ export const currentlyInfected = (cases, mul) => cases * mul;
 
 // Convert To Days
 export const convertToDays = (periodType, period) => {
-  let days = 0;
-
-  if (periodType.toLowerCase() === 'days' || periodType.toLowerCase() === 'day') {
-    days = period;
-  }
+  let days = period;
 
   if (periodType.toLowerCase() === 'weeks' || periodType.toLowerCase() === 'week') {
     days = period * 7;
