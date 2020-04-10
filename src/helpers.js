@@ -1,22 +1,22 @@
-// import from on-covid-19
-import { PERIOD } from 'on-covid-19';
+// Helper Functions
 
 // Currently Infected Calculator
 export const currentlyInfected = (cases, mul) => cases * mul;
 
 // Infections By Requested Time Factor
 export const infectionsByRequestedTimeFactor = (periodType, period) => {
-  let factor = period / 3;
+  let factor = 0;
 
-  switch (periodType.toUpperCase()) {
-    case PERIOD.MONTHS:
-      factor = (period * 30) / 3;
-      break;
-    case PERIOD.WEEKS:
-      factor = (period * 7) / 3;
-      break;
-    default:
-      break;
+  if (periodType.toLowerCase() === 'days' || periodType.toLowerCase() === 'day') {
+    factor = period / 3;
+  }
+
+  if (periodType.toLowerCase() === 'weeks' || periodType.toLowerCase() === 'week') {
+    factor = (period * 7) / 3;
+  }
+
+  if (periodType.toLowerCase() === 'months' || periodType.toLowerCase() === 'month') {
+    factor = (period * 30) / 3;
   }
 
   return factor;
@@ -24,17 +24,18 @@ export const infectionsByRequestedTimeFactor = (periodType, period) => {
 
 // Convert To Days
 export const convertToDays = (periodType, period) => {
-  let days = period;
+  let days = 0;
 
-  switch (periodType.toUpperCase()) {
-    case PERIOD.MONTHS:
-      days = period * 30;
-      break;
-    case PERIOD.WEEKS:
-      days = period * 7;
-      break;
-    default:
-      break;
+  if (periodType.toLowerCase() === 'days' || periodType.toLowerCase() === 'day') {
+    days = period;
+  }
+
+  if (periodType.toLowerCase() === 'weeks' || periodType.toLowerCase() === 'week') {
+    days = period * 7;
+  }
+
+  if (periodType.toLowerCase() === 'months' || periodType.toLowerCase() === 'month') {
+    days = period * 30;
   }
 
   return days;
