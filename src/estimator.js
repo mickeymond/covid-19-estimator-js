@@ -16,10 +16,10 @@ const covid19ImpactEstimator = (data) => {
   } = data;
 
   // Calculate Infections By Requested Time Factor
-  const ibrtFactor = Math.trunc(_CTD(periodType, timeToElapse)) / 3;
+  const ibrtFactor = Math.trunc(_CTD(periodType, timeToElapse) / 3);
 
   // Calculate Dollars In Flight Factor
-  const difFactor = avgDailyIncomeInUSD * Math.trunc(_CTD(periodType, timeToElapse));
+  const difFactor = avgDailyIncomeInUSD * _CTD(periodType, timeToElapse);
 
   // Return Results
   return {
