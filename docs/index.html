@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Covid-19 Estimator</title>
+  <link rel="stylesheet" href="assets/styles/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/styles/app.css">
+</head>
+<body>
+  <main class="mh-container">
+    <!-- Main Heading -->
+    <h1>Covid-19 Estimator</h1>
+
+    <!-- Form Section -->
+    <section class="mt-5">
+      <form id="covidEstimatorForm">
+        <div class="row mb-4">
+          <div class="col">
+            <label for="population">Populaion</label>
+            <input data-population id="population" type="text" class="form-control" placeholder="0" />
+          </div>
+          <div class="col">
+            <label for="timeToElapse">Time To Elapse</label>
+            <input data-time-to-elapse id="timeToElapse" type="text" class="form-control" placeholder="0" />
+          </div>
+        </div>
+        <div class="row mb-4">
+          <div class="col">
+            <label for="reportedCases">Reported Cases</label>
+            <input data-reported-cases id="reportedCases" type="text" class="form-control" placeholder="0" />
+          </div>
+          <div class="col">
+            <label for="totalHospitalBeds">Total Hospital Beds</label>
+            <input data-total-hospital-beds id="totalHospitalBeds" type="text" class="form-control" placeholder="0" />
+          </div>
+        </div>
+        <div class="row mb-4">
+          <div class="col">
+            <label for="periodType">Period Type</label>
+            <select data-period-type id="periodType" class="form-control">
+              <option value="days">days</option>
+              <option value="weeks">weeks</option>
+              <option value="months">months</option>
+            </select>
+          </div>
+        </div>
+        <div class="row mb-4">
+          <div class="col text-center">
+            <button data-go-estimate type="submit" class="btn btn-primary">Estimate</button>
+          </div>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <!-- Link Scripts -->
+  <script src="assets/scripts/app.js"></script>
+</body>
+</html>

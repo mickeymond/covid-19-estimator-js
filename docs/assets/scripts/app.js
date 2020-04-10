@@ -1,0 +1,1 @@
+console.log('Covid-19 Estimator');
