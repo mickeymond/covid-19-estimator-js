@@ -12,14 +12,14 @@ const covid19ImpactEstimator = (data) => {
     periodType,
     timeToElapse,
     totalHospitalBeds,
-    region: { avgDailyIncomeInUSD }
+    region: { avgDailyIncomePopulation, avgDailyIncomeInUSD }
   } = data;
 
   // Calculate Infections By Requested Time Factor
   const ibrtFactor = Math.trunc(_CTD(periodType, timeToElapse) / 3);
 
   // Calculate Dollars In Flight Factor
-  const difFactor = avgDailyIncomeInUSD * _CTD(periodType, timeToElapse);
+  const difFactor = avgDailyIncomePopulation * avgDailyIncomeInUSD * _CTD(periodType, timeToElapse);
 
   // 35% of Total Hospital Beds
   const xbeds = whatIs('35%').of(totalHospitalBeds);
