@@ -6,7 +6,7 @@ export const currentlyInfected = (cases, mul) => cases * mul;
 
 // Infections By Requested Time Factor
 export const infectionsByRequestedTimeFactor = (periodType, period) => {
-  let factor = 0;
+  let factor = period / 3;
 
   switch (periodType.toUpperCase()) {
     case PERIOD.MONTHS:
@@ -14,9 +14,6 @@ export const infectionsByRequestedTimeFactor = (periodType, period) => {
       break;
     case PERIOD.WEEKS:
       factor = (period * 7) / 3;
-      break;
-    case PERIOD.DAYS:
-      factor = period / 3;
       break;
     default:
       break;
@@ -27,7 +24,7 @@ export const infectionsByRequestedTimeFactor = (periodType, period) => {
 
 // Convert To Days
 export const convertToDays = (periodType, period) => {
-  let days = 0;
+  let days = period;
 
   switch (periodType.toUpperCase()) {
     case PERIOD.MONTHS:
@@ -35,9 +32,6 @@ export const convertToDays = (periodType, period) => {
       break;
     case PERIOD.WEEKS:
       days = period * 7;
-      break;
-    case PERIOD.DAYS:
-      days = period;
       break;
     default:
       break;
