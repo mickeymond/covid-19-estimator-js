@@ -25,10 +25,10 @@ export const estimateCovid19Impact = (req, res) => {
     return res.send(xml);
   }
 
-  res.json(result);
-}
+  return res.json(result);
+};
 
 export const accessLogs = (req, res) => {
   res.type('text/plain');
-  createReadStream(join(__dirname, 'access.log')).pipe(res);
-}
+  return createReadStream(join(__dirname, 'access.log')).pipe(res);
+};

@@ -4,7 +4,7 @@ import { checkSchema } from 'express-validator';
 // validate estimator input
 export const validateEstimatorInput = checkSchema({
   'region.name': {
-    isString: true,
+    isString: true
   },
   'region.avgAge': {
     isNumeric: true
@@ -24,15 +24,17 @@ export const validateEstimatorInput = checkSchema({
     errorMessage: 'periodType must be a string'
   },
   timeToElapse: {
-    isNumeric: true,
+    isNumeric: true
   },
   reportedCases: {
-    isInt: true,
+    isInt: true
   },
   population: {
-    isInt: true,
+    isInt: true
   },
   totalHospitalBeds: {
-    isInt: true,
-  },
+    isInt: true
+  }
 });
+
+export const validate = [];

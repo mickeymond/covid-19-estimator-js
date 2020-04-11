@@ -3,11 +3,21 @@ import { createWriteStream } from 'fs';
 import { join } from 'path';
 import express from 'express';
 import morgan from 'morgan';
+import winston from 'winston';
 
 import routes from './routes';
 
 // declare and define constants
 const PORT = process.env.PORT || 4000;
+
+// configure winston
+const logger = winston.createLogger({
+  level: 'info',
+  format: winston.format.json(),
+  transports: [
+    new winston.transports.Console({ format: winston.format.simple() })
+  ]
+});
 
 // initialize an express app
 const app = express();
@@ -25,6 +35,4 @@ app.use(morgan(':method  :url  :status  :response-time ms', { stream: accessLogS
 app.use('/api/v1', routes);
 
 // listen for incomming requests
-app.listen(PORT, () => {
-  console.log(`application listening on port ${PORT}`);
-});
+app.listen(PORT, () => logger.info(`application listening on port ${PORT}`));

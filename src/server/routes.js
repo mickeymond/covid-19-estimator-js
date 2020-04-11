@@ -11,7 +11,7 @@ const router = Router();
 router.post('/on-covid-19/:format?', validateEstimatorInput, estimateCovid19Impact);
 
 // ALL /api/v1/on-covid-19/logs
-router.use('/on-covid-19/logs', accessLogs)
+router.use('/on-covid-19/logs', accessLogs);
 
 // export router
 export default router;
