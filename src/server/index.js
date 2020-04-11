@@ -2,6 +2,7 @@
 import { createWriteStream } from 'fs';
 import { join } from 'path';
 import express from 'express';
+import cors from 'cors';
 import morgan from 'morgan';
 import winston from 'winston';
 
@@ -29,7 +30,10 @@ app.use(express.json());
 // morgan logs setup
 // create a write stream (in append mode)
 const accessLogStream = createWriteStream(join(__dirname, 'access.log'), { flags: 'a' });
-app.use(morgan(':method  :url  :status  :response-time ms', { stream: accessLogStream }));
+app.use(morgan(':method\t\t:url\t\t:status\t\t:response-time ms', { stream: accessLogStream }));
+
+// configure middlewares
+app.use(cors());
 
 // counfigure app to use router
 app.use('/api/v1', routes);
