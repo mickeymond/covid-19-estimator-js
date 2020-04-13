@@ -30,7 +30,9 @@ app.use(express.json());
 // morgan logs setup
 // create a write stream (in append mode)
 const accessLogStream = createWriteStream(join(__dirname, 'access.log'), { flags: 'a' });
-app.use(morgan(':method\t\t:url\t\t:status\t\t:response-time ms\n', { stream: accessLogStream }));
+app.use(morgan((tokens, req, res) => {
+  return `${tokens.method(req, res)}\t\t${tokens.url(req, res)}\t\t${tokens.status(req, res)}\t\t${Math.floor(tokens['response-time'](req, res))}ms`;
+}, { stream: accessLogStream }));
 
 // configure middlewares
 app.use(cors());
